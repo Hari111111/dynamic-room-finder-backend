@@ -3,7 +3,7 @@ import { env } from '../config/env';
 
 type TokenPayload = {
   id: string;
-  role: 'user' | 'admin';
+  role: 'user' | 'admin' | 'superadmin';
   name: string;
   email: string;
 };

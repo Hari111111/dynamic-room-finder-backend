@@ -1,9 +1,10 @@
 import { Router } from 'express';
-import { getAdminSummary } from '../controllers/adminController';
-import { requireAdmin, requireAuth } from '../middleware/authMiddleware';
+import { getAdminDashboard, updateAdminApproval } from '../controllers/adminController';
+import { requireAdmin, requireAuth, requireSuperadmin } from '../middleware/authMiddleware';
 
 const router = Router();
 
-router.get('/summary', requireAuth, requireAdmin, getAdminSummary);
+router.get('/dashboard', requireAuth, requireAdmin, getAdminDashboard);
+router.patch('/users/:id/approval', requireAuth, requireSuperadmin, updateAdminApproval);
 
 export default router;

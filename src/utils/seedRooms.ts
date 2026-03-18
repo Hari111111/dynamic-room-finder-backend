@@ -1,6 +1,8 @@
+import bcrypt from 'bcryptjs';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { RoomModel } from '../models/Room';
+import { UserModel } from '../models/User';
 
 type SeedRoom = {
   title: string;
@@ -47,5 +49,23 @@ export async function seedRoomsIfNeeded() {
     return;
   }
 
-  await RoomModel.insertMany(rooms);
+  let owner = await UserModel.findOne({ email: 'system.admin@roomfinder.local' });
+
+  if (!owner) {
+    owner = await UserModel.create({
+      name: 'System Superadmin',
+      email: 'system.admin@roomfinder.local',
+      password: await bcrypt.hash('system-seed-account', 10),
+      role: 'superadmin',
+      approvalStatus: 'approved',
+    });
+  }
+
+  await RoomModel.insertMany(
+    rooms.map((room) => ({
+      ...room,
+      ownerId: owner!._id,
+      ownerName: owner!.name,
+    })),
+  );
 }

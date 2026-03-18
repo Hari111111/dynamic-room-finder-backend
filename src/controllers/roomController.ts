@@ -71,8 +71,16 @@ export async function getRoomById(req: Request, res: Response) {
 
 export async function createRoom(req: Request, res: Response) {
   try {
+    if (!req.user) {
+      return res.status(401).json({ message: 'Authentication required.' });
+    }
+
     const payload = normalizeRoomPayload(req.body);
-    const room = await RoomModel.create(payload);
+    const room = await RoomModel.create({
+      ...payload,
+      ownerId: req.user.id,
+      ownerName: req.user.name,
+    });
     return res.status(201).json(room);
   } catch (error) {
     return res.status(400).json({
@@ -83,15 +91,30 @@ export async function createRoom(req: Request, res: Response) {
 
 export async function updateRoom(req: Request, res: Response) {
   try {
+    if (!req.user) {
+      return res.status(401).json({ message: 'Authentication required.' });
+    }
+
     const payload = normalizeRoomPayload(req.body);
-    const room = await RoomModel.findByIdAndUpdate(req.params.id, payload, {
-      new: true,
-      runValidators: true,
-    });
+    const room = await RoomModel.findById(req.params.id);
 
     if (!room) {
       return res.status(404).json({ message: 'Room not found.' });
     }
+
+    const isOwner = room.ownerId?.toString() === req.user.id;
+
+    if (req.user.role !== 'superadmin' && !isOwner) {
+      return res.status(403).json({ message: 'You can only update rooms created by you.' });
+    }
+
+    room.set({
+      ...payload,
+      ownerId: room.ownerId || req.user.id,
+      ownerName: room.ownerName || req.user.name,
+    });
+
+    await room.save();
 
     return res.json(room);
   } catch (error) {
@@ -102,11 +125,23 @@ export async function updateRoom(req: Request, res: Response) {
 }
 
 export async function deleteRoom(req: Request, res: Response) {
-  const deleted = await RoomModel.findByIdAndDelete(req.params.id);
+  if (!req.user) {
+    return res.status(401).json({ message: 'Authentication required.' });
+  }
 
-  if (!deleted) {
+  const room = await RoomModel.findById(req.params.id);
+
+  if (!room) {
     return res.status(404).json({ message: 'Room not found.' });
   }
+
+  const isOwner = room.ownerId?.toString() === req.user.id;
+
+  if (req.user.role !== 'superadmin' && !isOwner) {
+    return res.status(403).json({ message: 'You can only delete rooms created by you.' });
+  }
+
+  await room.deleteOne();
 
   return res.status(204).send();
 }

@@ -6,7 +6,6 @@ export const env = {
   port: Number(process.env.PORT) || 5000,
   mongoUri: process.env.MONGODB_URI || '',
   jwtSecret: process.env.JWT_SECRET || 'room-finder-dev-secret',
-  adminInviteCode: process.env.ADMIN_INVITE_CODE || '',
   clientOrigins: process.env.CLIENT_ORIGINS || 'http://localhost:3000,http://localhost:5173',
 };
 

@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: dynamic-room-finder-backend
+    env: node
+    rootDir: dynamic-room-finder-backend
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    autoDeploy: true

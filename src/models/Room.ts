@@ -35,6 +35,16 @@ const nearbyPlaceSchema = new mongoose.Schema(
 
 const roomSchema = new mongoose.Schema(
   {
+    ownerId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
+    ownerName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     title: { type: String, required: true, trim: true },
     city: { type: String, required: true, trim: true },
     locality: { type: String, required: true, trim: true },

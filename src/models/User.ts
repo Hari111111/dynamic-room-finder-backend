@@ -1,5 +1,8 @@
 import mongoose, { InferSchemaType, Model } from 'mongoose';
 
+export const USER_ROLES = ['user', 'admin', 'superadmin'] as const;
+export const APPROVAL_STATUSES = ['pending', 'approved', 'rejected'] as const;
+
 const userSchema = new mongoose.Schema(
   {
     name: {
@@ -14,14 +17,29 @@ const userSchema = new mongoose.Schema(
       trim: true,
       lowercase: true,
     },
+    mobileNumber: {
+      type: String,
+      trim: true,
+      default: '',
+    },
     password: {
       type: String,
       required: true,
     },
     role: {
       type: String,
-      enum: ['user', 'admin'],
+      enum: USER_ROLES,
       default: 'user',
+    },
+    approvalStatus: {
+      type: String,
+      enum: APPROVAL_STATUSES,
+      default: 'approved',
+    },
+    approvedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      default: null,
     },
   },
   {
