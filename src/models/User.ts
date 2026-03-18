@@ -41,6 +41,12 @@ const userSchema = new mongoose.Schema(
       ref: 'User',
       default: null,
     },
+    savedRooms: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Room',
+      },
+    ],
   },
   {
     timestamps: true,

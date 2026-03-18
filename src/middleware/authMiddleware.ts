@@ -18,6 +18,9 @@ async function attachCurrentUser(req: Request, token: string) {
     name: user.name,
     email: user.email,
     mobileNumber: user.mobileNumber ?? '',
+    savedRoomIds: Array.isArray(user.savedRooms)
+      ? user.savedRooms.map((roomId) => roomId.toString())
+      : [],
     approvalStatus: user.approvalStatus ?? 'approved',
   };
 }

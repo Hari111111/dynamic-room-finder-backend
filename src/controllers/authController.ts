@@ -1,5 +1,6 @@
 import bcrypt from 'bcryptjs';
 import { Request, Response } from 'express';
+import { RoomModel } from '../models/Room';
 import { UserModel } from '../models/User';
 import { generateToken } from '../utils/token';
 
@@ -8,6 +9,7 @@ function userResponse(user: {
   name: string;
   email: string;
   mobileNumber?: string;
+  savedRooms?: Array<{ toString(): string } | string>;
   role: 'user' | 'admin' | 'superadmin';
   approvalStatus?: 'pending' | 'approved' | 'rejected';
 }) {
@@ -16,6 +18,9 @@ function userResponse(user: {
     name: user.name,
     email: user.email,
     mobileNumber: user.mobileNumber ?? '',
+    savedRoomIds: Array.isArray(user.savedRooms)
+      ? user.savedRooms.map((roomId) => roomId.toString())
+      : [],
     role: user.role,
     approvalStatus: user.approvalStatus ?? 'approved',
   };
@@ -67,6 +72,7 @@ export async function signup(req: Request, res: Response) {
       password: hashedPassword,
       role,
       approvalStatus,
+      savedRooms: [],
     });
 
     const payload = userResponse(user);
@@ -122,5 +128,68 @@ export async function me(req: Request, res: Response) {
 
   return res.json({
     user: req.user,
+  });
+}
+
+export async function listWishlist(req: Request, res: Response) {
+  if (!req.user) {
+    return res.status(401).json({ message: 'Authentication required.' });
+  }
+
+  const user = await UserModel.findById(req.user.id).populate('savedRooms');
+
+  if (!user) {
+    return res.status(404).json({ message: 'User not found.' });
+  }
+
+  return res.json({
+    rooms: user.savedRooms ?? [],
+  });
+}
+
+export async function saveRoomToWishlist(req: Request, res: Response) {
+  if (!req.user) {
+    return res.status(401).json({ message: 'Authentication required.' });
+  }
+
+  const room = await RoomModel.findById(req.params.roomId);
+  if (!room) {
+    return res.status(404).json({ message: 'Room not found.' });
+  }
+
+  const user = await UserModel.findByIdAndUpdate(
+    req.user.id,
+    { $addToSet: { savedRooms: room._id } },
+    { new: true },
+  );
+
+  if (!user) {
+    return res.status(404).json({ message: 'User not found.' });
+  }
+
+  return res.json({
+    message: 'Room saved successfully.',
+    user: userResponse(user),
+  });
+}
+
+export async function removeRoomFromWishlist(req: Request, res: Response) {
+  if (!req.user) {
+    return res.status(401).json({ message: 'Authentication required.' });
+  }
+
+  const user = await UserModel.findByIdAndUpdate(
+    req.user.id,
+    { $pull: { savedRooms: req.params.roomId } },
+    { new: true },
+  );
+
+  if (!user) {
+    return res.status(404).json({ message: 'User not found.' });
+  }
+
+  return res.json({
+    message: 'Room removed from saved list.',
+    user: userResponse(user),
   });
 }

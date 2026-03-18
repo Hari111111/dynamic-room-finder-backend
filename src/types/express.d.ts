@@ -6,6 +6,7 @@ declare namespace Express {
       name: string;
       email: string;
       mobileNumber?: string;
+      savedRoomIds?: string[];
       approvalStatus: 'pending' | 'approved' | 'rejected';
     };
   }
