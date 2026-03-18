@@ -1,0 +1,261 @@
+{
+  "rooms": [
+    {
+      "id": "room_btm_bloom",
+      "title": "Bloom Courtyard Studio",
+      "city": "Bengaluru",
+      "locality": "BTM Layout",
+      "address": "19th Main Road, Stage 2, BTM Layout, Bengaluru",
+      "price": 14800,
+      "deposit": 30000,
+      "rating": 4.8,
+      "reviewCount": 126,
+      "occupancy": "Single",
+      "roomType": "Studio",
+      "gender": "Any",
+      "availableFrom": "2026-03-22",
+      "seatsLeft": 3,
+      "description": "A calm studio setup with work-ready seating, wardrobe storage, attached washroom, and rooftop access for late evening breaks.",
+      "heroTag": "Top Pick For Hybrid Workers",
+      "image": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80",
+      "amenities": [
+        "Wi-Fi",
+        "Attached bathroom",
+        "Laundry",
+        "Power backup",
+        "Housekeeping",
+        "Air conditioning"
+      ],
+      "rules": [
+        "No smoking indoors",
+        "Visitor entry until 9 PM",
+        "One month notice before move-out"
+      ],
+      "transit": [
+        "650 m to BTM Water Tank bus stop",
+        "15 min to Silk Board junction",
+        "Quick bike access to Koramangala"
+      ],
+      "nearbyPlaces": [
+        {
+          "id": "place_btm_1",
+          "name": "Asha Tiffins",
+          "category": "Famous Shop",
+          "distanceKm": 0.2,
+          "walkMinutes": 3,
+          "highlight": "Popular breakfast spot for dosa and filter coffee"
+        },
+        {
+          "id": "place_btm_2",
+          "name": "Apollo Pharmacy",
+          "category": "Medical",
+          "distanceKm": 0.35,
+          "walkMinutes": 5,
+          "highlight": "Open till late for daily essentials and medicines"
+        },
+        {
+          "id": "place_btm_3",
+          "name": "Madiwala Lake Park",
+          "category": "Leisure",
+          "distanceKm": 1.1,
+          "walkMinutes": 14,
+          "highlight": "Open-air walking track and morning fitness zone"
+        }
+      ],
+      "featured": true,
+      "updatedAt": "2026-03-18T06:00:00.000Z"
+    },
+    {
+      "id": "room_hsr_harbor",
+      "title": "Harbor House Coliving",
+      "city": "Bengaluru",
+      "locality": "HSR Layout",
+      "address": "27th Main, Sector 1, HSR Layout, Bengaluru",
+      "price": 11200,
+      "deposit": 22000,
+      "rating": 4.6,
+      "reviewCount": 89,
+      "occupancy": "Shared",
+      "roomType": "Coliving",
+      "gender": "Any",
+      "availableFrom": "2026-03-20",
+      "seatsLeft": 5,
+      "description": "Community-first coliving with furnished shared rooms, common lounge, weekly events, and easy access to startup offices.",
+      "heroTag": "Community Favorite",
+      "image": "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80",
+      "amenities": [
+        "Wi-Fi",
+        "Meals",
+        "Laundry",
+        "Gym corner",
+        "Housekeeping"
+      ],
+      "rules": [
+        "Quiet hours after 11 PM",
+        "Biometric access required",
+        "No outside cooking appliances"
+      ],
+      "transit": [
+        "400 m to HSR BDA Complex bus stop",
+        "20 min to Bellandur",
+        "Rapid cab access to Electronic City"
+      ],
+      "nearbyPlaces": [
+        {
+          "id": "place_hsr_1",
+          "name": "Third Wave Coffee",
+          "category": "Cafe",
+          "distanceKm": 0.3,
+          "walkMinutes": 4,
+          "highlight": "Reliable workspace cafe with good coffee"
+        },
+        {
+          "id": "place_hsr_2",
+          "name": "Udupi Upahar",
+          "category": "Famous Shop",
+          "distanceKm": 0.5,
+          "walkMinutes": 7,
+          "highlight": "Go-to local place for affordable South Indian meals"
+        },
+        {
+          "id": "place_hsr_3",
+          "name": "Cult Fit",
+          "category": "Fitness",
+          "distanceKm": 0.8,
+          "walkMinutes": 11,
+          "highlight": "Group workout sessions and gym floor access"
+        }
+      ],
+      "featured": true,
+      "updatedAt": "2026-03-18T06:05:00.000Z"
+    },
+    {
+      "id": "room_hyd_metro",
+      "title": "Metro Nest PG",
+      "city": "Hyderabad",
+      "locality": "Madhapur",
+      "address": "Ayyappa Society Road, Madhapur, Hyderabad",
+      "price": 9300,
+      "deposit": 15000,
+      "rating": 4.4,
+      "reviewCount": 73,
+      "occupancy": "Double",
+      "roomType": "PG",
+      "gender": "Girls",
+      "availableFrom": "2026-03-25",
+      "seatsLeft": 2,
+      "description": "Secure PG designed for working women with biometric entry, meal plan, shared study table, and metro-friendly commute.",
+      "heroTag": "Metro Connected",
+      "image": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80",
+      "amenities": [
+        "Meals",
+        "Wi-Fi",
+        "CCTV",
+        "Laundry",
+        "Study desk"
+      ],
+      "rules": [
+        "Entry log after 10 PM",
+        "Guest access only in lobby",
+        "ID verification mandatory"
+      ],
+      "transit": [
+        "12 min to Raidurg metro",
+        "8 min to HITEC City offices",
+        "Frequent cabs to Jubilee Hills"
+      ],
+      "nearbyPlaces": [
+        {
+          "id": "place_hyd_1",
+          "name": "Shah Ghouse",
+          "category": "Famous Shop",
+          "distanceKm": 0.6,
+          "walkMinutes": 8,
+          "highlight": "Known for biryani and late-night dining"
+        },
+        {
+          "id": "place_hyd_2",
+          "name": "Ratnadeep Supermarket",
+          "category": "Groceries",
+          "distanceKm": 0.25,
+          "walkMinutes": 4,
+          "highlight": "Daily grocery and personal care shopping"
+        },
+        {
+          "id": "place_hyd_3",
+          "name": "Mindspace Park",
+          "category": "Business Hub",
+          "distanceKm": 1.4,
+          "walkMinutes": 18,
+          "highlight": "Office district with coworking and cafes"
+        }
+      ],
+      "featured": false,
+      "updatedAt": "2026-03-18T06:10:00.000Z"
+    },
+    {
+      "id": "room_pune_river",
+      "title": "Riverlight Private Room",
+      "city": "Pune",
+      "locality": "Kharadi",
+      "address": "EON Free Zone Road, Kharadi, Pune",
+      "price": 13600,
+      "deposit": 25000,
+      "rating": 4.7,
+      "reviewCount": 101,
+      "occupancy": "Single",
+      "roomType": "Private Room",
+      "gender": "Any",
+      "availableFrom": "2026-03-28",
+      "seatsLeft": 1,
+      "description": "Bright private room with balcony seating, curated interiors, app-based maintenance support, and a quick ride to the IT park.",
+      "heroTag": "Designed For Long Stays",
+      "image": "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80",
+      "amenities": [
+        "Wi-Fi",
+        "Balcony",
+        "Microwave",
+        "Power backup",
+        "Housekeeping"
+      ],
+      "rules": [
+        "No loud music after 10 PM",
+        "Pets not allowed",
+        "Cleaning slot every Tuesday"
+      ],
+      "transit": [
+        "10 min to EON IT Park",
+        "Shared autos near main gate",
+        "Airport access in 25 min"
+      ],
+      "nearbyPlaces": [
+        {
+          "id": "place_pune_1",
+          "name": "Irani Cafe",
+          "category": "Cafe",
+          "distanceKm": 0.45,
+          "walkMinutes": 6,
+          "highlight": "Comfort breakfast and quick meeting spot"
+        },
+        {
+          "id": "place_pune_2",
+          "name": "Phoenix Marketcity",
+          "category": "Mall",
+          "distanceKm": 2.8,
+          "walkMinutes": 34,
+          "highlight": "Shopping, cinema, and weekend dining"
+        },
+        {
+          "id": "place_pune_3",
+          "name": "Amanora Garden",
+          "category": "Leisure",
+          "distanceKm": 2.1,
+          "walkMinutes": 26,
+          "highlight": "Green public space for runs and evenings"
+        }
+      ],
+      "featured": true,
+      "updatedAt": "2026-03-18T06:15:00.000Z"
+    }
+  ]
+}
